@@ -3,7 +3,7 @@ from flask import request, json
 from app.moldel.tables import Student, Course
 
 
-@app.route("/api/student/create", methods=['POST'])
+@app.route("/api/student", methods=['POST'])
 def createStudent():
     response = {"status": 400, "message": "Student not created"}
 
@@ -72,7 +72,7 @@ def getStudent(student_id):
     return response, response["status"]
 
 
-@app.route("/api/student/update/<int:student_id>", methods=['POST'])
+@app.route("/api/student/<int:student_id>", methods=['POST'])
 def updateStudent(student_id):
     response = {"status": 404, "message": "Users not available"}
 
@@ -110,7 +110,7 @@ def deleteStudent(student_id):
     return response, response["status"]
 
 
-@app.route("/api/course/create", methods=['POST'])
+@app.route("/api/course", methods=['POST'])
 def createCourse():
     response = {"status": 400, "message": "Course not created"}
 
@@ -173,7 +173,7 @@ def getCourse(course_id):
     return response, response["status"]
 
 
-@app.route("/api/course/update/<int:course_id>", methods=['POST'])
+@app.route("/api/course/<int:course_id>", methods=['POST'])
 def updateCourse(course_id):
     response = {"status": 404, "message": "Course not available"}
 
