@@ -29,9 +29,13 @@ Crie um ambiente virtual Python, se ainda não tiver sido criado e ativa-lo.
 # Inicie o aplicativo
 
 Antes de iniciar a aplicação, execute os seguintes comandos para gerar o arquivo dump.db:
-`pyhton3 run.py db init`
-`pyhton3 run.py db migrate`
-`pyhton3 run.py db upgrade`
+
+ `pyhton3 run.py db init`
+
+ `pyhton3 run.py db migrate`
+
+ `pyhton3 run.py db upgrade`
 
 Para executar a aplicação:
-`python3 run.py runserver`
+
+ `python3 run.py runserver`
