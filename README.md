@@ -6,14 +6,14 @@ API utilzando Flask para geremencimento de cadastro de alunos e cursos.
 |--------------------------|--------|-----------------------|
 | /api/student             | GET    | List all students     |
 | /api/student             | POST   | Create a new student  |
-| /api/student/<id>        | GET    | Show a single student |
-| /api/student/<id>        | POST   | Update a student      |
-| /api/student/delete/'<id>' | GET    | Delete a student      |
+| /api/student/id          | GET    | Show a single student |
+| /api/student/id          | POST   | Update a student      |
+| /api/student/delete/id   | GET    | Delete a student      |
 | /api/course              | GET    | List all course       |
 | /api/course              | POST   | Create a new course   |
-| /api/course/<id>         | GET    | Show a single course  |
-| /api/course/<id>         | POST   | Update a course       |
-| /api/course/delete/<id>  | GET    | Delete a course       |
+| /api/course/id           | GET    | Show a single course  |
+| /api/course/id           | POST   | Update a course       |
+| /api/course/delete/id    | GET    | Delete a course       |
 
 
 # Guia rápido
