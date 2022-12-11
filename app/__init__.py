@@ -12,3 +12,6 @@ migrate = Migrate(app, db)
 
 manager = Manager(app)
 manager.add_command("db", MigrateCommand)
+
+from app.moldel import tables
+from app.controller import routes
