@@ -1,6 +1,6 @@
 from app import app, db
 from flask import request, json
-from app.moldel.tables import Student
+from app.moldel.tables import Student, Course
 
 
 @app.route("/api/student/create", methods=['POST'])
@@ -109,3 +109,101 @@ def deleteStudent(student_id):
 
     return response, response["status"]
 
+
+@app.route("/api/course/create", methods=['POST'])
+def createCourse():
+    response = {"status": 400, "message": "Course not created"}
+
+    course_data = json.loads(request.data)
+    try:
+        name = course_data["name"]
+
+        course = Course(name=name)
+        db.session.add(course)
+        db.session.commit()
+
+        response["status"] = 201
+        response["message"] = "Course created successfully"
+
+        return response, response["status"]
+    except Exception as e:
+        print(f"Error: {e}")
+
+    return response, response["status"]
+
+
+@app.route("/api/course", methods=['GET'])
+def getCourses():
+    response = {"status": 404, "message": "Course not available"}
+
+    courses = Course.query.all()
+    if courses:
+        list_courses = []
+        for course in courses:
+            course_dic = {
+                "id": course.id,
+                "name": course.name
+            }
+            list_courses.append(course_dic)
+
+        response["status"] = 200
+        response["message"] = list_courses
+
+        return response, response["status"]
+
+    return response, response["status"]
+
+
+@app.route("/api/course/<int:course_id>", methods=['GET'])
+def getCourse(course_id):
+    response = {"status": 404, "message": "Course not found"}
+
+    course = Course.query.filter_by(id=course_id).first()
+    if course:
+        course_dic = {
+            "id": course.id,
+            "name": course.name
+        }
+
+        response["status"] = 200
+        response["message"] = course_dic
+
+        return response, response["status"]
+
+    return response, response["status"]
+
+
+@app.route("/api/course/update/<int:course_id>", methods=['POST'])
+def updateCourse(course_id):
+    response = {"status": 404, "message": "Course not available"}
+
+    course = Course.query.filter_by(id=course_id).first()
+    if course:
+        course_data = json.loads(request.data)
+        course.name = course_data["name"]
+
+        db.session.commit()
+
+        response["status"] = 200
+        response["message"] = "Course updated successfully"
+
+        return response, response["status"]
+
+    return response, response["status"]
+
+
+@app.route("/api/course/delete/<int:course_id>", methods=['GET'])
+def deleteCourse(course_id):
+    response = {"status": 404, "message": "Course not available"}
+
+    course = Course.query.filter_by(id=course_id).first()
+    if course:
+        db.session.delete(course)
+        db.session.commit()
+
+        response["status"] = 200
+        response["message"] = "Course deleted successfully"
+
+        return response, response["status"]
+
+    return response, response["status"]
