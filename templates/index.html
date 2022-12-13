@@ -1,14 +1,14 @@
 <h1>Cadatro de Aluno</h1>
 <form action="{{url_for('add_student')}}" method="POST">
     <div>
-      <input type="text" name="name" placeholder="Full Name">
+      <input type="text" name="name" placeholder="Full Name" required>
     </div>
     <div>
-      <input type="text" name="email" placeholder="E-mail">
+      <input type="text" name="email" placeholder="E-mail" required>
     </div>
     <div>
         <span>Selecione um curso</span>
-        <select name="comp_select">
+        <select name="comp_select" required>
             {% for c in courses %}
               <option value="{{ c.name }}">{{ c.name }}</option>
             {% endfor %}
@@ -52,7 +52,7 @@
 <h1>Cadatro de Curso</h1>
 <form action="{{url_for('add_course')}}" method="POST">
     <div>
-      <input type="text" name="name" placeholder="Name">
+      <input type="text" name="name" placeholder="Name" required>
     </div>
    
     <button> Salvar </button>

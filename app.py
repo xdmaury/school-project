@@ -12,6 +12,12 @@ def index():
     response = requests.get('http://127.0.0.1:5000/api/student').text
     students =  json.loads(response)
 
+    if students['status'] == 404:
+        students["message"] = []
+
+    if courses['status'] == 404:
+        courses["message"] = []
+
     return render_template('index.html',  courses=courses["message"], students=students["message"] )
 
 
