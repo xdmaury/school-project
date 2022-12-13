@@ -42,6 +42,8 @@ Para executar a aplicação:
  
  # Inicie o aplicativo front-end
  
+Após a execução da API execute a aplicação front-end:
+
   `pyhton3 app.py`
   
  
