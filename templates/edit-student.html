@@ -1,0 +1,20 @@
+<h1>Editar Aluno</h1>
+<form action="/update_student/{{student.id}}" method="POST">
+    <div>
+      <input type="text" name="name" value="{{student.name}}">
+    </div>
+    <div>
+      <input type="text" name="email" value="{{student.email}}">
+    </div>
+    <div>
+        <span>Selecione um curso</span>
+        <select name="comp_select">
+            {% for c in courses %}
+              <option value="{{ c.name }}" 
+              {% if c.name == student.course %} selected {% endif %}>{{ c.name }}</option>
+            {% endfor %}
+          </select>
+    </div>
+    
+    <button> Salvar </button>
+  </form>

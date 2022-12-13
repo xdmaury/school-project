@@ -1,0 +1,84 @@
+<h1>Cadatro de Aluno</h1>
+<form action="{{url_for('add_student')}}" method="POST">
+    <div>
+      <input type="text" name="name" placeholder="Full Name">
+    </div>
+    <div>
+      <input type="text" name="email" placeholder="E-mail">
+    </div>
+    <div>
+        <span>Selecione um curso</span>
+        <select name="comp_select">
+            {% for c in courses %}
+              <option value="{{ c.name }}">{{ c.name }}</option>
+            {% endfor %}
+          </select>
+    </div>
+    
+    <button> Salvar </button>
+</form>
+
+
+  <h1>Listas de Alunos</h1>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>Name</td>
+          <td>E-mail</td>
+          <td>Course</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for student in students %}
+        <tr>
+          <td>{{student.id}}</td>
+          <td>{{student.name}}</td>
+          <td>{{student.email}}</td>
+          <td>{{student.course}}</td>
+          <td>
+            <a href="/edit_student/{{student.id}}">edit</a>
+            <a href="/del_student/{{student.id}}">delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</br>
+
+<h1>Cadatro de Curso</h1>
+<form action="{{url_for('add_course')}}" method="POST">
+    <div>
+      <input type="text" name="name" placeholder="Name">
+    </div>
+   
+    <button> Salvar </button>
+  </form>
+
+
+  <h1>Listas de Cursos</h1>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>Name</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for course in courses %}
+        <tr>
+          <td>{{course.id}}</td>
+          <td>{{course.name}}</td>
+          <td>
+            <a href="/edit_course/{{course.id}}">edit</a>
+            <a href="/del_course/{{course.id}}">delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
