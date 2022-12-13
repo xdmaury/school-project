@@ -39,3 +39,9 @@ Antes de iniciar a aplicação, execute os seguintes comandos para gerar o arqui
 Para executar a aplicação:
 
  `python3 run.py runserver`
+ 
+ # Inicie o aplicativo front-end
+ 
+  `pyhton3 app.py`
+  
+ 
